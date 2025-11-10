@@ -374,6 +374,49 @@
                 font-size: 0.85rem;
             }
         }
+        /* --- Mobile interaction fix --- */
+
+/* Make sure the 3D hearts or aurora never block clicks */
+canvas, #background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* 👈 lets taps pass through */
+}
+
+/* Each step card always stays centered and clickable */
+.step {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 700px;
+  min-height: 60vh;
+  text-align: center;
+  z-index: 10; /* 👈 ensures it’s above canvas */
+}
+
+/* Buttons stay on top and respond to touch */
+button {
+  pointer-events: auto;
+  z-index: 20;
+  touch-action: manipulation; /* 👈 reduces tap delay on iOS */
+}
+
+/* Prevent unwanted scroll or zoom issues */
+body, html {
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
     </style>
 </head>
 <body class="antialiased">
