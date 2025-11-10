@@ -744,7 +744,7 @@
                     onComplete: () => {
                         gsap.to(scrollArrow, { opacity: 1, duration: 0.5, delay: 0.5, pointerEvents: 'auto' });
                         document.getElementById('final-thankyou').style.pointerEvents = 'auto'; // Make visible after scroll
-                        gsap.to('#final-thankyou', { opacity: 1, duration: 1, delay: 1 });
+                        gsap.to('#final-thankyou', { opacity: 1, duration: 1, delay: 10 });
                     }
                 }
             );
