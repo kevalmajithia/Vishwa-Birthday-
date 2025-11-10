@@ -386,7 +386,7 @@
     <div id="step-1" class="step">
         <div class="text-6xl mb-6 glowing-icon">❤️</div>
         <h1 class="text-5xl md:text-6xl mb-4">Hey Vishwa 💕</h1>
-        <p class="text-lg md:text-xl mb-8 text-gray-300"> While I couldn't wish you in-person, I hope this brings a smile on your face:)</p>
+        <p class="text-lg md:text-xl mb-8 text-gray-300">I built this little world for you — just to bring a smile to your face on your special day.</p>
         <button class="button-primary text-xl" onclick="nextStep()">Let’s Begin</button>
     </div>
 
@@ -394,13 +394,13 @@
     <div id="step-2" class="step">
         <div class="text-6xl mb-6 glowing-icon">🎉</div>
         <h2 class="text-5xl md:text-6xl mb-4">Happy Birthday, Vishwa!</h2>
-        <p class="text-lg md:text-xl mb-8 text-gray-300">November 10 has always been a special day, a reminder of how beautifully ambitious, curious, and kind you are.</p>
+        <p class="text-lg md:text-xl mb-8 text-gray-300">November 10 has always been a special day — a reminder of how beautifully ambitious, curious, and kind you are.</p>
         <button class="button-primary text-xl" onclick="nextStep()">There’s more…</button>
     </div>
 
     <!-- Step 3: Reasons Why (Bento Grid) -->
     <div id="step-3" class="step">
-        <h3 class="text-5xl md:text-6xl mb-8 pt-6 md:pt-0">A Few Things I Adore About You</h3>
+        <h2 class="text-5xl md:text-6xl mb-8">A Few Things I Adore About You</h2>
         <div class="bento-grid">
             <div class="bento-card">
                 <h4 class="flex items-center"><span class="text-2xl mr-2">✨</span> Your Ambition</h4>
@@ -744,7 +744,7 @@
                     onComplete: () => {
                         gsap.to(scrollArrow, { opacity: 1, duration: 0.5, delay: 0.5, pointerEvents: 'auto' });
                         document.getElementById('final-thankyou').style.pointerEvents = 'auto'; // Make visible after scroll
-                        gsap.to('#final-thankyou', { opacity: 1, duration: 1, delay: 10 });
+                        gsap.to('#final-thankyou', { opacity: 1, duration: 1, delay: 1 });
                     }
                 }
             );
