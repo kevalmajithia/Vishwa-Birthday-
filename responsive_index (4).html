@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Happy Birthday, Vishwa! ❤️</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --dark-bg: #0c0a09;
+            --pink-gradient-start: #ff7eb9;
+            --pink-gradient-end: #ff3864;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+            overflow: hidden; /* Prevent scroll until scroll is needed for letter */
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewport="0 0 100 100" style="fill:black;font-size:18px;"><text y="50%">✨</text></svg>') 15 15, auto;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(90deg, #fce4ec, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 700px;
+            min-height: 60vh;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
+        .button-primary {
+            background: linear-gradient(90deg, var(--pink-gradient-start), var(--pink-gradient-end));
+            border-radius: 9999px;
+            padding: 0.75rem 2rem;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 56, 100, 0.7);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            outline: none;
+        }
+
+        .button-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 56, 100, 1);
+        }
+
+        .button-primary:focus {
+            ring: 2px;
+            ring-offset: 2px;
+            ring-color: var(--pink-gradient-start);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pink-gradient-start), var(--pink-gradient-end));
+            box-shadow: 0 0 10px rgba(255, 56, 100, 0.7);
+            z-index: 1000;
+        }
+
+        /* Aurora Background */
+        .aurora-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 50% 50%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
+                        linear-gradient(135deg, rgba(12, 10, 9, 0.8) 0%, rgba(12, 10, 9, 1) 100%);
+            background-size: 200% 200%;
+            animation: aurora-movement 60s ease infinite alternate;
+            z-index: -2;
+        }
+
+        @keyframes aurora-movement {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Bento Grid Specifics */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1rem;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .bento-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+            border-color: rgba(255, 56, 100, 0.4);
+        }
+
+        .bento-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #fce4ec, #ffdee9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bento-card p {
+            font-size: 0.95rem;
+            color: #c0c0c0;
+        }
+
+        /* Polaroid Style */
+        .polaroid-container {
+            position: relative;
+            background: white;
+            padding: 10px 10px 30px 10px; /* Thicker bottom border for caption */
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: inline-block;
+            transform: rotate(2deg); /* A slight tilt */
+            margin-bottom: 1rem;
+        }
+
+        .polaroid-container img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+        }
+
+        .polaroid-caption {
+            color: #333;
+            font-family: 'Handlee', cursive; /* A more "handwritten" feel */
+            font-size: 1.1rem;
+            margin-top: 0.75rem;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            text-align: center;
+        }
+
+        /* Glowing icon */
+        .glowing-icon {
+            text-shadow: 0 0 8px rgba(255, 56, 100, 0.9), 0 0 15px rgba(255, 56, 100, 0.6);
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { text-shadow: 0 0 8px rgba(255, 56, 100, 0.9), 0 0 15px rgba(255, 56, 100, 0.6); }
+            100% { text-shadow: 0 0 12px rgba(255, 56, 100, 1), 0 0 20px rgba(255, 56, 100, 0.8); }
+        }
+
+        /* Finale text */
+        .final-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            opacity: 0;
+            z-index: 100;
+        }
+
+        /* Scroll Styling */
+        .scroll-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 90%;
+            max-width: 600px;
+            aspect-ratio: 1 / 1.414; /* A4 aspect ratio */
+            pointer-events: none;
+            opacity: 0;
+            z-index: 90;
+            perspective: 1000px;
+        }
+
+        .scroll-closed {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #d4af37, #b8860b, #d4af37); /* Golden gradient */
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), inset 0 0 15px rgba(255, 255, 200, 0.5);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid #ffd700; /* Gold border */
+            transform: scale(1);
+            transform-origin: center center;
+            user-select: none;
+        }
+
+        .scroll-closed:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.9), inset 0 0 20px rgba(255, 255, 200, 0.7);
+        }
+
+        .scroll-closed::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .scroll-text-overlay {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            text-shadow: 0 0 8px rgba(0,0,0,0.7);
+            margin-bottom: 10px;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        .scroll-icon-overlay {
+            font-size: 3rem;
+            text-shadow: 0 0 8px rgba(0,0,0,0.7);
+            animation: pulse-icon 1.5s infinite alternate;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        @keyframes pulse-icon {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .scroll-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f7f0e6; /* Parchment color */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" opacity="0.4"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.3"/><rect width="100%" height="100%" fill="url(%23g)"/></svg>');
+            background-size: cover;
+            border-radius: 10px;
+            transform-origin: top;
+            transform: scaleY(0); /* Hidden initially */
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+            padding: 2rem;
+            box-sizing: border-box;
+            overflow-y: auto; /* Enable scrolling for letter */
+            color: #333;
+            line-height: 1.6;
+            text-align: left;
+            opacity: 0; /* Fade in later */
+            transition: opacity 0.5s;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            border: 1px solid #d4c0b5;
+        }
+
+        .scroll-content p {
+            margin-bottom: 1em;
+        }
+
+        .scroll-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scroll-content::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .scroll-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 56, 100, 0.7);
+            border-radius: 10px;
+        }
+
+        .scroll-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 56, 100, 0.9);
+        }
+
+        .scroll-arrow-pulse {
+            position: sticky;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: rgba(255, 56, 100, 0.8);
+            text-shadow: 0 0 5px rgba(255, 56, 100, 0.5);
+            animation: pulse-arrow 1.5s infinite alternate;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes pulse-arrow {
+            0% { transform: translate(-50%, 0) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, 5px) scale(1.05); opacity: 1; }
+        }
+
+        .final-thankyou {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #c0c0c0;
+            font-size: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s;
+            text-align: center;
+        }
+
+        /* Responsive adjustments for letter content */
+        @media (max-width: 768px) {
+            .scroll-wrapper {
+                max-width: 95%;
+                width: 95%;
+                aspect-ratio: unset; /* Remove fixed aspect ratio for mobile */
+                height: 80vh; /* Allow height to adjust */
+            }
+            .scroll-content {
+                padding: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  button {
+    padding: 0.75em 1.5em;
+    font-size: 1em;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1em;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 0.5em;
+    }
+    button {
+      font-size: 0.95em;
+      padding: 0.6em 1.2em;
+    }
+  }
+</style></head>
+<body class="antialiased">
+<div class="aurora-bg"></div>
+<div id="three-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+<div class="progress-bar" id="progressBar"></div>
+<!-- Step 1: Welcome -->
+<div class="step" id="step-1">
+<div class="text-6xl mb-6 glowing-icon">❤️</div>
+<h1 class="text-5xl md:text-6xl mb-4">Hey Vishwa 💕</h1>
+<p class="text-lg md:text-xl mb-8 text-gray-300">I built this little world for you — just to bring a smile to your face on your special day.</p>
+<button class="button-primary text-xl" onclick="nextStep()">Let’s Begin</button>
+</div>
+<!-- Step 2: Core Message -->
+<div class="step" id="step-2">
+<div class="text-6xl mb-6 glowing-icon">🎉</div>
+<h2 class="text-5xl md:text-6xl mb-4">Happy Birthday, Vishwa!</h2>
+<p class="text-lg md:text-xl mb-8 text-gray-300">November 10 has always been a special day — a reminder of how beautifully ambitious, curious, and kind you are.</p>
+<button class="button-primary text-xl" onclick="nextStep()">There’s more…</button>
+</div>
+<!-- Step 3: Reasons Why (Bento Grid) -->
+<div class="step" id="step-3">
+<h2 class="text-5xl md:text-6xl mb-8">A Few Things I Adore About You</h2>
+<div class="bento-grid">
+<div class="bento-card">
+<h4 class="flex items-center"><span class="text-2xl mr-2">✨</span> Your Ambition</h4>
+<p>You’re always raising the bar higher, and it’s impossible not to admire that.</p>
+</div>
+<div class="bento-card">
+<h4 class="flex items-center"><span class="text-2xl mr-2">😊</span> That Smile</h4>
+<p>It never fails to bring one to my face too.</p>
+</div>
+<div class="bento-card col-span-1 md:col-span-2">
+<h4 class="flex items-center"><span class="text-2xl mr-2">🌟</span> Your Radiant Spirit</h4>
+<p>Your outlook on life is truly inspiring, it makes everyone around you see things differently.</p>
+</div>
+</div>
+<button class="button-primary text-xl mt-12" onclick="nextStep()">Remember this?</button>
+</div>
+<!-- Step 4: Just You (Polaroid) -->
+<div class="step" id="step-4">
+<h2 class="text-5xl md:text-6xl mb-8">Just You.</h2>
+<div class="polaroid-container">
+<img alt="Vishwa" class="w-full h-auto max-w-sm rounded-sm" src="https://lh3.googleusercontent.com/d/1IGjc_1xrPrAtsaI3kNhyaxMpQ74A-wJm=s1200"/>
+<p class="polaroid-caption">Pure sunshine in a frame ☀️</p>
+</div>
+<p class="text-lg md:text-xl mb-8 mt-4 text-gray-300">Hehe while making this, it lured me into making cold coffee 😂</p>
+<button class="button-primary text-xl" onclick="nextStep()">One last thing…</button>
+</div>
+<!-- Step 5: The Birthday Wish & Finale -->
+<div class="step" id="step-5">
+<div class="text-6xl mb-6 glowing-icon">🎂</div>
+<h2 class="text-5xl md:text-6xl mb-4">My Wish for You</h2>
+<p class="text-lg md:text-xl mb-8 text-gray-300">May this year bring you all the love, growth, and happiness you deserve. You’ve inspired me in more ways than I can say.</p>
+<button class="button-primary text-xl" onclick="triggerFinale()">Celebrate!</button>
+</div>
+<!-- Finale message -->
+<div class="final-message" id="final-message">Happy Birthday, Vishwa! ❤️</div>
+<!-- Scroll container -->
+<div class="scroll-wrapper" id="scroll-wrapper">
+<div class="scroll-closed" id="scroll-closed">
+<div class="scroll-text-overlay">Click to Unroll</div>
+<div class="scroll-icon-overlay">📜</div>
+</div>
+<div class="scroll-content hidden" id="scroll-content">
+<p>Hey Vishwa, wish you a many many happy returns of the day.<br/>
+            While November 10 is a super special day, I hope you stay as ambitious, curious as you are. Ohh sorry I forgot to mention super beautiful 😍.<br/>
+            I hope you have a wonderful and super successful year ahead😉<br/>
+<br/>
+            Just wanted to make it special for you, hope this brings a smile on you face🤩. <br/>
+            While this is long overdue, (almost 8 years) 😅, but honestly things changed, life changed, places changed, in your situation country changes but yet something did feel the same way as it felt a few years ago.<br/>
+            I had a very honest confession to make and send it as a letter to Florida, but with the blessings of overthinking and debating if I should confess or not, it was too late to send it across.</p>
+<p>So, here goes:<br/>
+            I believe you must know that I did have a little (it’s an understatement, a huge crush on you 😂), I could never confess it out loud. School got over, everyone moved on, the race for career began. IIT JEE, Covid, Engineering and then a job life continued, but honestly what I once considered to be a silly attraction, over a period of time I realised it wasn’t a mere crush. And I would be lying that every time I saw your reel or your post didn’t bring the same smile it brought during the school days😅 from the pony Vishwa with whom I used to fight every second day to miss adult Vishwa, it never changed.<br/>
+            A feeling which I thought would eventually fade with time, grew over time and aged like a fine wine🍷, hehe a non alcoholic pun. But yes it did. I still remember me trying to act cool when we spoke on call last year 🤣 <br/>
+            Now before this question pops in your mind, ki what’s the use of telling It to you now? Honestly there couldn’t be a better timing. While I just started my professional journey it is just the beginning. As time passed I did become ambitious inspired by you obviously but I did get serious, and won’t be wrong to admit, I got to a good start.<br/>
+            I know it might sound random, but I wanted to tell you that you’ve always inspired me. You set the bar high, in ambition, in energy, in curiosity, and maybe that’s what pushed me to go after my own dreams too.<br/>
+    
+            And for anyone who ever became successful, there was a partner who supported their ambitions. While we aren’t kids anymore, I dream of you being my biggest cheerleader, someone who supports and understands my crazy ambitions, just as I would for you.<br/>
+<br/>
+            Now with life taking us on such different paths, I don’t know what the future holds, but I do know this: I’d really like to reconnect. Maybe start as friends again, talk more often, and see where things go naturally.<br/>
+            Hehe all I want is to annoy you with some brain rot memes and a good time, and even a brilliant disorganized Jake Peralta, needed a super organized and genius Amy (A Brooklyn 99 reference, if you ain’t aware)<br/>
+<br/>
+            I completely understand if it feel's too much at this point, no pressure, take your time :) <br/>
+            Well, I am not sure, if you must’ve read it till the end because it is way too long, but if you did I would really be happy if we could consider it😉. Well at least the 13 year old Keval would be super happy for sharing it. <br/>
+
+            💖 Thank you for reading. I hope you have a crazy year ahead, and all your dreams come true🥹</p>
+<div class="scroll-arrow-pulse" id="scroll-arrow">↓</div>
+</div>
+</div>
+<div class="final-thankyou" id="final-thankyou">
+        💖 Thank you for reading<br/>
+<span class="text-sm mt-1 block">Would love to catch up — K</span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+<script>
+        const steps = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
+        let currentStepIndex = 0;
+        const progressBar = document.getElementById('progressBar');
+        const threeContainer = document.getElementById('three-container');
+
+        // Three.js setup for floating hearts
+        let scene, camera, renderer, hearts = [];
+        const heartGeometry = new THREE.ShapeGeometry(createHeartShape());
+
+        function createHeartShape() {
+            const x = 0, y = 0;
+            const heartShape = new THREE.Shape();
+            heartShape.moveTo(x + 0.5, y + 0.5);
+            heartShape.bezierCurveTo(x + 0.5, y + 0.5, x + 0.4, y, x, y);
+            heartShape.bezierCurveTo(x - 0.6, y, x - 0.6, y + 0.7, x - 0.6, y + 0.7);
+            heartShape.bezierCurveTo(x - 0.6, y + 1.1, x - 0.3, y + 1.54, x + 0.5, y + 1.9);
+            heartShape.bezierCurveTo(x + 1.3, y + 1.54, x + 1.6, y + 1.1, x + 1.6, y + 0.7);
+            heartShape.bezierCurveTo(x + 1.6, y + 0.7, x + 1.6, y, x + 1.0, y);
+            heartShape.bezierCurveTo(x + 0.7, y, x + 0.5, y + 0.5, x + 0.5, y + 0.5);
+            return heartShape;
+        }
+
+        function initThree() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            threeContainer.appendChild(renderer.domElement);
+            camera.position.z = 10;
+
+            const numHearts = 25;
+            for (let i = 0; i < numHearts; i++) {
+                addHeart();
+            }
+
+            animateThree();
+        }
+
+        function addHeart(initialPos = null) {
+            const material = new THREE.MeshBasicMaterial({
+                color: new THREE.Color(Math.random() > 0.5 ? 0xff7eb9 : 0xff3864),
+                transparent: true,
+                opacity: 0.8
+            });
+            const heart = new THREE.Mesh(heartGeometry, material);
+
+            if (initialPos) {
+                heart.position.set(initialPos.x, initialPos.y, initialPos.z);
+            } else {
+                heart.position.set(
+                    (Math.random() - 0.5) * 30,
+                    (Math.random() - 0.5) * 30,
+                    (Math.random() - 0.5) * 20
+                );
+            }
+            heart.scale.set(0.2 + Math.random() * 0.3, 0.2 + Math.random() * 0.3, 0.2 + Math.random() * 0.3);
+            heart.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+            heart.userData.rotationSpeed = new THREE.Vector3(
+                (Math.random() - 0.5) * 0.01,
+                (Math.random() - 0.5) * 0.01,
+                (Math.random() - 0.5) * 0.01
+            );
+            heart.userData.floatSpeed = 0.01 + Math.random() * 0.05;
+            heart.userData.floatAmplitude = 0.5 + Math.random() * 1.5;
+            heart.userData.initialY = heart.position.y;
+            scene.add(heart);
+            hearts.push(heart);
+        }
+
+        function animateThree() {
+            requestAnimationFrame(animateThree);
+
+            hearts.forEach(heart => {
+                heart.rotation.x += heart.userData.rotationSpeed.x;
+                heart.rotation.y += heart.userData.rotationSpeed.y;
+                heart.rotation.z += heart.userData.rotationSpeed.z;
+
+                heart.position.y += heart.userData.floatSpeed;
+                heart.position.x += Math.sin(Date.now() * 0.001 + heart.id) * 0.005; // Gentle horizontal drift
+
+                // If heart goes too far up, reset its position
+                if (heart.position.y > camera.position.y + 15) {
+                    heart.position.y = camera.position.y - 15;
+                    heart.position.x = (Math.random() - 0.5) * 30;
+                    heart.position.z = (Math.random() - 0.5) * 20;
+                    heart.material.opacity = 0.8; // Reset opacity
+                    heart.scale.set(0.2 + Math.random() * 0.3, 0.2 + Math.random() * 0.3, 0.2 + Math.random() * 0.3);
+                }
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', onWindowResize);
+
+        // GSAP transitions
+        function showStep(index) {
+            gsap.to(progressBar, {
+                width: `${((index + 1) / steps.length) * 100}%`,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+
+            // Hide current step
+            if (currentStepIndex !== -1) {
+                const currentStepElement = document.getElementById(steps[currentStepIndex]);
+                gsap.to(currentStepElement, {
+                    opacity: 0,
+                    y: -50,
+                    duration: 0.7,
+                    ease: "power2.inOut",
+                    pointerEvents: 'none'
+                });
+            }
+
+            // Show next step
+            currentStepIndex = index;
+            const nextStepElement = document.getElementById(steps[currentStepIndex]);
+            gsap.fromTo(nextStepElement,
+                { opacity: 0, y: 50 },
+                { opacity: 1, y: 0, duration: 0.7, ease: "power2.out", pointerEvents: 'auto' }
+            );
+        }
+
+        function nextStep() {
+            if (currentStepIndex < steps.length - 1) {
+                showStep(currentStepIndex + 1);
+            }
+        }
+
+        function triggerFinale() {
+            const currentStepElement = document.getElementById(steps[currentStepIndex]);
+            const finaleButton = currentStepElement.querySelector('.button-primary');
+
+            gsap.to(finaleButton, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.5,
+                pointerEvents: 'none',
+                onComplete: () => {
+                    gsap.to(currentStepElement, {
+                        opacity: 0,
+                        duration: 1,
+                        ease: "power2.inOut",
+                        pointerEvents: 'none',
+                        onComplete: () => {
+                            startConfettiAndFinale();
+                        }
+                    });
+                }
+            });
+        }
+
+        function startConfettiAndFinale() {
+            const finalMessage = document.getElementById('final-message');
+            gsap.fromTo(finalMessage,
+                { opacity: 0, y: 50, scale: 0.8 },
+                { opacity: 1, y: 0, scale: 1, duration: 1.5, ease: "power3.out", delay: 0.5 }
+            );
+
+            // Confetti
+            const confettiDuration = 5 * 1000; // 5 seconds
+            const animationEnd = Date.now() + confettiDuration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / confettiDuration);
+                // since particles fall down, we can animate them with a curve to look more natural
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#ff7eb9', '#ff3864', '#ffd700', '#ffffff'],
+                    shapes: ['circle', 'square', 'heart', 'star', 'emoji'],
+                    scalar: randomInRange(0.8, 1.2),
+                    flat: false,
+                    emojis: ['❤️', '💖', '✨']
+                }));
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#ff7eb9', '#ff3864', '#ffd700', '#ffffff'],
+                    shapes: ['circle', 'square', 'heart', 'star', 'emoji'],
+                    scalar: randomInRange(0.8, 1.2),
+                    flat: false,
+                    emojis: ['❤️', '💖', '✨']
+                }));
+            }, 250);
+
+            // Animate hearts upward and fade out
+            gsap.to(hearts, {
+                duration: confettiDuration / 1000,
+                y: "+=30", // Move hearts up
+                opacity: 0, // Fade out hearts
+                ease: "power1.in",
+                stagger: 0.05,
+                onComplete: () => {
+                    hearts.forEach(heart => scene.remove(heart)); // Remove hearts from scene
+                    hearts = []; // Clear array
+                    showLetterScroll();
+                }
+            });
+        }
+
+        function showLetterScroll() {
+            const finalMessage = document.getElementById('final-message');
+            gsap.to(finalMessage, { opacity: 0, duration: 1, onComplete: () => finalMessage.style.display = 'none' });
+
+            const scrollWrapper = document.getElementById('scroll-wrapper');
+            gsap.fromTo(scrollWrapper,
+                { opacity: 0, scale: 0.8, y: '0%' },
+                { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out", delay: 0.5, pointerEvents: 'auto', onComplete: () => {
+                    const scrollClosed = document.getElementById('scroll-closed');
+                    scrollClosed.addEventListener('click', unrollLetter);
+                }}
+            );
+        }
+
+        function unrollLetter() {
+            const scrollClosed = document.getElementById('scroll-closed');
+            const scrollContent = document.getElementById('scroll-content');
+            const scrollTextOverlay = document.querySelector('.scroll-text-overlay');
+            const scrollIconOverlay = document.querySelector('.scroll-icon-overlay');
+            const scrollArrow = document.getElementById('scroll-arrow');
+
+            gsap.to([scrollTextOverlay, scrollIconOverlay], { opacity: 0, duration: 0.3 });
+            scrollClosed.style.pointerEvents = 'none'; // Disable further clicks
+
+            // First animate the "closed scroll" to disappear or transform
+            gsap.to(scrollClosed, {
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.7,
+                ease: "power2.inOut"
+            });
+
+            // Then animate the actual content unrolling
+            gsap.fromTo(scrollContent,
+                { opacity: 0, scaleY: 0, transformOrigin: 'top' },
+                {
+                    opacity: 1,
+                    scaleY: 1,
+                    duration: 2,
+                    ease: "power3.out",
+                    delay: 0.5, // Delay after closed scroll starts fading
+                    className: '+=block', // Make it block for layout, removing 'hidden'
+                    onStart: () => {
+                        scrollContent.classList.remove('hidden'); // Ensure it's not hidden
+                        scrollContent.style.height = '100%'; // Allow it to fill wrapper
+                        document.body.style.overflowY = 'auto'; // Enable body scroll for letter
+                    },
+                    onComplete: () => {
+                        gsap.to(scrollArrow, { opacity: 1, duration: 0.5, delay: 0.5, pointerEvents: 'auto' });
+                        document.getElementById('final-thankyou').style.pointerEvents = 'auto'; // Make visible after scroll
+                        gsap.to('#final-thankyou', { opacity: 1, duration: 1, delay: 1 });
+                    }
+                }
+            );
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initThree();
+            showStep(0); // Show the first step
+        });
+    </script>
+</body>
+</html>
