@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Vishwa! ❤️</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Happy Birthday, Vishwa! ❤️</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
             --dark-bg: #0c0a09;
             --pink-gradient-start: #ff7eb9;
@@ -375,114 +376,136 @@
             }
         }
     </style>
-</head>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+  }
+  body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  .container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 0.5em;
+    }
+    .container {
+      padding: 0.5em;
+    }
+  }
+</style></head>
 <body class="antialiased">
-    <div class="aurora-bg"></div>
-    <div id="three-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
-
-    <div class="progress-bar" id="progressBar"></div>
-
-    <!-- Step 1: Welcome -->
-    <div id="step-1" class="step">
-        <div class="text-6xl mb-6 glowing-icon">❤️</div>
-        <h1 class="text-5xl md:text-6xl mb-4">Hey Vishwa 💕</h1>
-        <p class="text-lg md:text-xl mb-8 text-gray-300">I built this little world for you — just to bring a smile to your face on your special day.</p>
-        <button class="button-primary text-xl" onclick="nextStep()">Let’s Begin</button>
-    </div>
-
-    <!-- Step 2: Core Message -->
-    <div id="step-2" class="step">
-        <div class="text-6xl mb-6 glowing-icon">🎉</div>
-        <h2 class="text-5xl md:text-6xl mb-4">Happy Birthday, Vishwa!</h2>
-        <p class="text-lg md:text-xl mb-8 text-gray-300">November 10 has always been a special day — a reminder of how beautifully ambitious, curious, and kind you are.</p>
-        <button class="button-primary text-xl" onclick="nextStep()">There’s more…</button>
-    </div>
-
-    <!-- Step 3: Reasons Why (Bento Grid) -->
-    <div id="step-3" class="step">
-        <h2 class="text-5xl md:text-6xl mb-8">A Few Things I Adore About You</h2>
-        <div class="bento-grid">
-            <div class="bento-card">
-                <h4 class="flex items-center"><span class="text-2xl mr-2">✨</span> Your Ambition</h4>
-                <p>You’re always raising the bar higher, and it’s impossible not to admire that.</p>
-            </div>
-            <div class="bento-card">
-                <h4 class="flex items-center"><span class="text-2xl mr-2">😊</span> That Smile</h4>
-                <p>It never fails to bring one to my face too.</p>
-            </div>
-            <div class="bento-card col-span-1 md:col-span-2">
-                <h4 class="flex items-center"><span class="text-2xl mr-2">🌟</span> Your Radiant Spirit</h4>
-                <p>Your outlook on life is truly inspiring, it makes everyone around you see things differently.</p>
-            </div>
-        </div>
-        <button class="button-primary text-xl mt-12" onclick="nextStep()">Remember this?</button>
-    </div>
-
-    <!-- Step 4: Just You (Polaroid) -->
-    <div id="step-4" class="step">
-        <h2 class="text-5xl md:text-6xl mb-8">Just You.</h2>
-        <div class="polaroid-container">
-            <img src="https://lh3.googleusercontent.com/d/1IGjc_1xrPrAtsaI3kNhyaxMpQ74A-wJm=s1200" alt="Vishwa" class="w-full h-auto max-w-sm rounded-sm">
-            <p class="polaroid-caption">Pure sunshine in a frame ☀️</p>
-        </div>
-        <p class="text-lg md:text-xl mb-8 mt-4 text-gray-300">Hehe while making this, it lured me into making cold coffee 😂</p>
-        <button class="button-primary text-xl" onclick="nextStep()">One last thing…</button>
-    </div>
-
-    <!-- Step 5: The Birthday Wish & Finale -->
-    <div id="step-5" class="step">
-        <div class="text-6xl mb-6 glowing-icon">🎂</div>
-        <h2 class="text-5xl md:text-6xl mb-4">My Wish for You</h2>
-        <p class="text-lg md:text-xl mb-8 text-gray-300">May this year bring you all the love, growth, and happiness you deserve. You’ve inspired me in more ways than I can say.</p>
-        <button class="button-primary text-xl" onclick="triggerFinale()">Celebrate!</button>
-    </div>
-
-    <!-- Finale message -->
-    <div id="final-message" class="final-message">Happy Birthday, Vishwa! ❤️</div>
-
-    <!-- Scroll container -->
-    <div id="scroll-wrapper" class="scroll-wrapper">
-        <div id="scroll-closed" class="scroll-closed">
-            <div class="scroll-text-overlay">Click to Unroll</div>
-            <div class="scroll-icon-overlay">📜</div>
-        </div>
-        <div id="scroll-content" class="scroll-content hidden">
-            <p>Hey Vishwa, wish you a many many happy returns of the day.<br>
-            While November 10 is a super special day, I hope you stay as ambitious, curious as you are. Ohh sorry I forgot to mention super beautiful 😍.<br>
-            I hope you have a wonderful and super successful year ahead😉<br>
-            <br>
-            Just wanted to make it special for you, hope this brings a smile on you face🤩. <br>
-            While this is long overdue, (almost 8 years) 😅, but honestly things changed, life changed, places changed, in your situation country changes but yet something did feel the same way as it felt a few years ago.<br>
+<div class="aurora-bg"></div>
+<div id="three-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+<div class="progress-bar" id="progressBar"></div>
+<!-- Step 1: Welcome -->
+<div class="step" id="step-1">
+<div class="text-6xl mb-6 glowing-icon">❤️</div>
+<h1 class="text-5xl md:text-6xl mb-4">Hey Vishwa 💕</h1>
+<p class="text-lg md:text-xl mb-8 text-gray-300">I built this little world for you — just to bring a smile to your face on your special day.</p>
+<button class="button-primary text-xl" onclick="nextStep()">Let’s Begin</button>
+</div>
+<!-- Step 2: Core Message -->
+<div class="step" id="step-2">
+<div class="text-6xl mb-6 glowing-icon">🎉</div>
+<h2 class="text-5xl md:text-6xl mb-4">Happy Birthday, Vishwa!</h2>
+<p class="text-lg md:text-xl mb-8 text-gray-300">November 10 has always been a special day — a reminder of how beautifully ambitious, curious, and kind you are.</p>
+<button class="button-primary text-xl" onclick="nextStep()">There’s more…</button>
+</div>
+<!-- Step 3: Reasons Why (Bento Grid) -->
+<div class="step" id="step-3">
+<h2 class="text-5xl md:text-6xl mb-8">A Few Things I Adore About You</h2>
+<div class="bento-grid">
+<div class="bento-card">
+<h4 class="flex items-center"><span class="text-2xl mr-2">✨</span> Your Ambition</h4>
+<p>You’re always raising the bar higher, and it’s impossible not to admire that.</p>
+</div>
+<div class="bento-card">
+<h4 class="flex items-center"><span class="text-2xl mr-2">😊</span> That Smile</h4>
+<p>It never fails to bring one to my face too.</p>
+</div>
+<div class="bento-card col-span-1 md:col-span-2">
+<h4 class="flex items-center"><span class="text-2xl mr-2">🌟</span> Your Radiant Spirit</h4>
+<p>Your outlook on life is truly inspiring, it makes everyone around you see things differently.</p>
+</div>
+</div>
+<button class="button-primary text-xl mt-12" onclick="nextStep()">Remember this?</button>
+</div>
+<!-- Step 4: Just You (Polaroid) -->
+<div class="step" id="step-4">
+<h2 class="text-5xl md:text-6xl mb-8">Just You.</h2>
+<div class="polaroid-container">
+<img alt="Vishwa" class="w-full h-auto max-w-sm rounded-sm" src="https://lh3.googleusercontent.com/d/1IGjc_1xrPrAtsaI3kNhyaxMpQ74A-wJm=s1200"/>
+<p class="polaroid-caption">Pure sunshine in a frame ☀️</p>
+</div>
+<p class="text-lg md:text-xl mb-8 mt-4 text-gray-300">Hehe while making this, it lured me into making cold coffee 😂</p>
+<button class="button-primary text-xl" onclick="nextStep()">One last thing…</button>
+</div>
+<!-- Step 5: The Birthday Wish & Finale -->
+<div class="step" id="step-5">
+<div class="text-6xl mb-6 glowing-icon">🎂</div>
+<h2 class="text-5xl md:text-6xl mb-4">My Wish for You</h2>
+<p class="text-lg md:text-xl mb-8 text-gray-300">May this year bring you all the love, growth, and happiness you deserve. You’ve inspired me in more ways than I can say.</p>
+<button class="button-primary text-xl" onclick="triggerFinale()">Celebrate!</button>
+</div>
+<!-- Finale message -->
+<div class="final-message" id="final-message">Happy Birthday, Vishwa! ❤️</div>
+<!-- Scroll container -->
+<div class="scroll-wrapper" id="scroll-wrapper">
+<div class="scroll-closed" id="scroll-closed">
+<div class="scroll-text-overlay">Click to Unroll</div>
+<div class="scroll-icon-overlay">📜</div>
+</div>
+<div class="scroll-content hidden" id="scroll-content">
+<p>Hey Vishwa, wish you a many many happy returns of the day.<br/>
+            While November 10 is a super special day, I hope you stay as ambitious, curious as you are. Ohh sorry I forgot to mention super beautiful 😍.<br/>
+            I hope you have a wonderful and super successful year ahead😉<br/>
+<br/>
+            Just wanted to make it special for you, hope this brings a smile on you face🤩. <br/>
+            While this is long overdue, (almost 8 years) 😅, but honestly things changed, life changed, places changed, in your situation country changes but yet something did feel the same way as it felt a few years ago.<br/>
             I had a very honest confession to make and send it as a letter to Florida, but with the blessings of overthinking and debating if I should confess or not, it was too late to send it across.</p>
-
-            <p>So, here goes:<br>
-            I believe you must know that I did have a little (it’s an understatement, a huge crush on you 😂), I could never confess it out loud. School got over, everyone moved on, the race for career began. IIT JEE, Covid, Engineering and then a job life continued, but honestly what I once considered to be a silly attraction, over a period of time I realised it wasn’t a mere crush. And I would be lying that every time I saw your reel or your post didn’t bring the same smile it brought during the school days😅 from the pony Vishwa with whom I used to fight every second day to miss adult Vishwa, it never changed.<br>
-            A feeling which I thought would eventually fade with time, grew over time and aged like a fine wine🍷, hehe a non alcoholic pun. But yes it did. I still remember me trying to act cool when we spoke on call last year 🤣 <br>
-            Now before this question pops in your mind, ki what’s the use of telling It to you now? Honestly there couldn’t be a better timing. While I just started my professional journey it is just the beginning. As time passed I did become ambitious inspired by you obviously but I did get serious, and won’t be wrong to admit, I got to a good start.<br>
-            I know it might sound random, but I wanted to tell you that you’ve always inspired me. You set the bar high, in ambition, in energy, in curiosity, and maybe that’s what pushed me to go after my own dreams too.<br>
+<p>So, here goes:<br/>
+            I believe you must know that I did have a little (it’s an understatement, a huge crush on you 😂), I could never confess it out loud. School got over, everyone moved on, the race for career began. IIT JEE, Covid, Engineering and then a job life continued, but honestly what I once considered to be a silly attraction, over a period of time I realised it wasn’t a mere crush. And I would be lying that every time I saw your reel or your post didn’t bring the same smile it brought during the school days😅 from the pony Vishwa with whom I used to fight every second day to miss adult Vishwa, it never changed.<br/>
+            A feeling which I thought would eventually fade with time, grew over time and aged like a fine wine🍷, hehe a non alcoholic pun. But yes it did. I still remember me trying to act cool when we spoke on call last year 🤣 <br/>
+            Now before this question pops in your mind, ki what’s the use of telling It to you now? Honestly there couldn’t be a better timing. While I just started my professional journey it is just the beginning. As time passed I did become ambitious inspired by you obviously but I did get serious, and won’t be wrong to admit, I got to a good start.<br/>
+            I know it might sound random, but I wanted to tell you that you’ve always inspired me. You set the bar high, in ambition, in energy, in curiosity, and maybe that’s what pushed me to go after my own dreams too.<br/>
     
-            And for anyone who ever became successful, there was a partner who supported their ambitions. While we aren’t kids anymore, I dream of you being my biggest cheerleader, someone who supports and understands my crazy ambitions, just as I would for you.<br>
-                <br>
-            Now with life taking us on such different paths, I don’t know what the future holds, but I do know this: I’d really like to reconnect. Maybe start as friends again, talk more often, and see where things go naturally.<br>
-            Hehe all I want is to annoy you with some brain rot memes and a good time, and even a brilliant disorganized Jake Peralta, needed a super organized and genius Amy (A Brooklyn 99 reference, if you ain’t aware)<br>
-<br>
-            I completely understand if it feel's too much at this point, no pressure, take your time :) <br>
-            Well, I am not sure, if you must’ve read it till the end because it is way too long, but if you did I would really be happy if we could consider it😉. Well at least the 13 year old Keval would be super happy for sharing it. <br>
+            And for anyone who ever became successful, there was a partner who supported their ambitions. While we aren’t kids anymore, I dream of you being my biggest cheerleader, someone who supports and understands my crazy ambitions, just as I would for you.<br/>
+<br/>
+            Now with life taking us on such different paths, I don’t know what the future holds, but I do know this: I’d really like to reconnect. Maybe start as friends again, talk more often, and see where things go naturally.<br/>
+            Hehe all I want is to annoy you with some brain rot memes and a good time, and even a brilliant disorganized Jake Peralta, needed a super organized and genius Amy (A Brooklyn 99 reference, if you ain’t aware)<br/>
+<br/>
+            I completely understand if it feel's too much at this point, no pressure, take your time :) <br/>
+            Well, I am not sure, if you must’ve read it till the end because it is way too long, but if you did I would really be happy if we could consider it😉. Well at least the 13 year old Keval would be super happy for sharing it. <br/>
 
             💖 Thank you for reading. I hope you have a crazy year ahead, and all your dreams come true🥹</p>
-            <div id="scroll-arrow" class="scroll-arrow-pulse">↓</div>
-        </div>
-    </div>
-    <div id="final-thankyou" class="final-thankyou">
-        💖 Thank you for reading<br>
-        <span class="text-sm mt-1 block">Would love to catch up — K</span>
-    </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
-    <script>
+<div class="scroll-arrow-pulse" id="scroll-arrow">↓</div>
+</div>
+</div>
+<div class="final-thankyou" id="final-thankyou">
+        💖 Thank you for reading<br/>
+<span class="text-sm mt-1 block">Would love to catch up — K</span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+<script>
         const steps = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
         let currentStepIndex = 0;
         const progressBar = document.getElementById('progressBar');
